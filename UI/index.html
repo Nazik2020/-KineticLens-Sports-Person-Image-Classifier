@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kinetic Lens | Sports Face Recognition</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#262626",
+                      "tertiary-fixed": "#b7a4ff",
+                      "on-secondary": "#00213f",
+                      "tertiary-dim": "#a58dfb",
+                      "primary": "#50b5ff",
+                      "inverse-on-surface": "#565554",
+                      "surface-container-lowest": "#000000",
+                      "primary-dim": "#00a6f9",
+                      "surface-variant": "#262626",
+                      "on-secondary-fixed": "#003561",
+                      "surface-tint": "#50b5ff",
+                      "primary-fixed": "#00a9fd",
+                      "tertiary-fixed-dim": "#aa93ff",
+                      "secondary-dim": "#4fa1f9",
+                      "on-tertiary-container": "#260073",
+                      "on-surface-variant": "#adaaaa",
+                      "secondary": "#4fa1f9",
+                      "secondary-container": "#0060a8",
+                      "outline": "#777575",
+                      "on-tertiary": "#331283",
+                      "inverse-surface": "#fcf8f8",
+                      "error": "#ff716c",
+                      "on-primary-fixed": "#000000",
+                      "on-primary-fixed-variant": "#002f4b",
+                      "error-container": "#9f0519",
+                      "on-error": "#490006",
+                      "inverse-primary": "#006499",
+                      "on-tertiary-fixed-variant": "#3e228e",
+                      "surface-dim": "#0e0e0e",
+                      "tertiary-container": "#a790fe",
+                      "on-surface": "#ffffff",
+                      "error-dim": "#d7383b",
+                      "secondary-fixed": "#b5d4ff",
+                      "on-secondary-container": "#f6f7ff",
+                      "outline-variant": "#494847",
+                      "on-primary-container": "#00253c",
+                      "secondary-fixed-dim": "#9cc7ff",
+                      "on-primary": "#00314e",
+                      "surface": "#0e0e0e",
+                      "primary-fixed-dim": "#009be9",
+                      "on-secondary-fixed-variant": "#005291",
+                      "surface-container-low": "#131313",
+                      "surface-container": "#1a1919",
+                      "on-tertiary-fixed": "#1b0056",
+                      "background": "#0e0e0e",
+                      "surface-container-high": "#201f1f",
+                      "tertiary": "#b4a0ff",
+                      "on-background": "#ffffff",
+                      "primary-container": "#00a9fd",
+                      "surface-bright": "#2c2c2c",
+                      "on-error-container": "#ffa8a3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.75rem",
+                      "lg": "0.75rem",
+                      "xl": "1rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary selection:text-on-primary">
+
+<!-- Top Navigation Shell -->
+<header class="flex justify-between items-center w-full px-8 h-20 border-b border-[#ffffff15] bg-[#0e0e0e] fixed top-0 z-50">
+    <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary text-3xl">sports_soccer</span>
+        <span class="material-symbols-outlined text-primary text-3xl">sports_basketball</span>
+        <div class="ml-4">
+            <h1 class="text-2xl font-black text-[#50b5ff] tracking-tighter leading-none">Kinetic Lens</h1>
+            <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">AI-Powered Athlete Identification</p>
+        </div>
+    </div>
+    <nav class="hidden md:flex gap-8 items-center">
+        <a class="nav-link text-[#50b5ff] active font-['Inter'] tracking-tight" href="#">Dashboard</a>
+        <a class="nav-link text-gray-400 hover:text-white transition-colors font-['Inter'] tracking-tight" href="#">Database</a>
+        <a class="nav-link text-gray-400 hover:text-white transition-colors font-['Inter'] tracking-tight" href="#">History</a>
+        <a class="nav-link text-gray-400 hover:text-white transition-colors font-['Inter'] tracking-tight" href="#">API</a>
+    </nav>
+    <div class="flex items-center gap-4">
+        <button class="p-2 text-gray-400 hover:text-white transition-all duration-300 ease-out active:scale-95">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button class="p-2 text-gray-400 hover:text-white transition-all duration-300 ease-out active:scale-95">
+            <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-outline-variant/30">
+            <img class="w-full h-full object-cover" alt="User Profile" src="https://lh3.googleusercontent.com/a/ACg8ocL_u_vV_V_V_V_V_V_V_V_V_V_V_V_V_V_V_V_V=s96-c"/>
+        </div>
+    </div>
+</header>
+
+<main class="pt-28 pb-20 px-8 max-w-7xl mx-auto space-y-12">
+    <!-- Upload Section -->
+    <section class="w-full max-w-4xl mx-auto">
+        <div id="drop-zone" class="upload-zone group relative bg-[#1a1919] border-2 border-dashed border-primary/30 rounded-xl p-12 text-center transition-all duration-500 ease-out hover:border-primary hover:shadow-[0_0_30px_rgba(80,181,255,0.2)]">
+            <div class="flex flex-col items-center justify-center space-y-6">
+                <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                    <span class="material-symbols-outlined text-primary text-4xl">cloud_upload</span>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-bold tracking-tight">Upload Image or Drag & Drop</h3>
+                    <p class="text-gray-500 text-sm font-label">Supported formats: JPG, PNG, JPEG</p>
+                </div>
+                <input type="file" id="file-input" class="hidden" accept="image/*">
+                <button id="upload-btn" class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold px-8 py-3 rounded-lg flex items-center gap-2 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    <span class="material-symbols-outlined">upload_file</span>
+                        Select Image
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section id="result-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch opacity-0 pointer-events-none transition-opacity duration-500">
+        <!-- Source Card -->
+        <div class="lg:col-span-5 bg-surface-container-low rounded-xl overflow-hidden flex flex-col">
+            <div class="p-4 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-high/50">
+                <span class="label-sm uppercase tracking-widest text-[10px] text-gray-400 font-bold">Uploaded Image</span>
+                <span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-bold">RAW INPUT</span>
+            </div>
+            <div class="aspect-square relative p-6 bg-[#000000]">
+                <img id="source-img" class="w-full h-full object-cover rounded-lg opacity-80" alt="Source Image" src="">
+                <div class="absolute inset-0 border-[1px] border-primary/20 m-12 pointer-events-none flex items-center justify-center">
+                    <div id="scanner" class="scan-line"></div>
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flow Divider -->
+        <div class="lg:col-span-2 flex items-center justify-center py-4 lg:py-0">
+            <div class="relative flex items-center">
+                <div class="hidden lg:block w-px h-24 bg-gradient-to-b from-transparent via-primary/30 to-transparent"></div>
+                <div class="bg-surface-container p-4 rounded-full border border-primary/20 z-10 shadow-[0_0_20px_rgba(80,181,255,0.1)]">
+                    <span class="material-symbols-outlined text-primary text-3xl lg:rotate-0 rotate-90">double_arrow</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prediction Card -->
+        <div id="prediction-card" class="lg:col-span-5 bg-surface-container rounded-xl overflow-hidden border border-primary/20 shadow-2xl shadow-primary/5 flex flex-col">
+            <div class="p-4 border-b border-outline-variant/10 flex justify-between items-center bg-primary/5">
+                <span class="label-sm uppercase tracking-widest text-[10px] text-primary font-bold">Predicted Athlete</span>
+                <span id="match-badge" class="text-[10px] bg-primary text-on-primary px-2 py-0.5 rounded-full font-black">SEARCHING...</span>
+            </div>
+            <div class="flex-1 p-8 space-y-6 flex flex-col justify-center">
+                <div class="flex items-center gap-6">
+                    <div class="w-32 h-32 rounded-xl overflow-hidden border-2 border-primary p-1 bg-surface-container-highest">
+                        <img id="prediction-img" class="w-full h-full object-cover rounded-lg" alt="Prediction" src="">
+                    </div>
+                    <div class="space-y-1">
+                        <h2 id="prediction-name" class="text-4xl font-black tracking-tighter leading-tight">...</h2>
+                        <div class="flex items-center gap-2">
+                            <span id="prediction-sport" class="bg-secondary/10 text-secondary px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3 pt-4">
+                    <div class="flex justify-between items-end">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 font-black">Confidence Level</label>
+                        <span id="confidence-text" class="text-3xl font-black text-primary tracking-tighter">0%</span>
+                    </div>
+                    <div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div id="confidence-bar" class="h-full bg-gradient-to-r from-primary to-secondary w-[0%] rounded-full shadow-[0_0_10px_rgba(80,181,255,0.5)] transition-all duration-1000"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 italic">Analysis using KineticLens v4.2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Athlete Roster Section -->
+    <section class="space-y-6">
+        <div class="flex items-center gap-4">
+            <h3 class="font-black text-xl tracking-tight">Active Recognition Roster</h3>
+            <div class="h-px flex-1 bg-outline-variant/15"></div>
+        </div>
+        <div id="roster" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <!-- Lionel Messi -->
+            <div data-athlete="lionel_messi" class="athlete-card group bg-[#111111] border border-[#ffffff15] rounded-xl overflow-hidden p-3 hover:border-primary/40 transition-all duration-300">
+                <div class="aspect-[4/5] rounded-lg overflow-hidden mb-3 grayscale group-hover:grayscale-0 transition-all">
+                    <img class="w-full h-full object-cover" src="assets/lionel_messi_portrait_1775985439385.png" alt="Lionel Messi">
+                </div>
+                <div class="space-y-0.5">
+                    <p class="text-xs font-black uppercase text-on-surface tracking-tighter">Lionel Messi</p>
+                    <p class="text-[10px] text-gray-500 font-bold">Football</p>
+                </div>
+                <div class="check-badge absolute top-4 right-4 bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center shadow-lg opacity-0 scale-0 transition-all">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                </div>
+            </div>
+            <!-- Virat Kohli -->
+            <div data-athlete="virat_kohli" class="athlete-card group bg-[#111111] border border-[#ffffff15] rounded-xl overflow-hidden p-3 hover:border-primary/40 transition-all duration-300">
+                <div class="aspect-[4/5] rounded-lg overflow-hidden mb-3 grayscale group-hover:grayscale-0 transition-all">
+                    <img class="w-full h-full object-cover" src="assets/virat_kohli_portrait_1775985353393.png" alt="Virat Kohli">
+                </div>
+                <div class="space-y-0.5">
+                    <p class="text-xs font-black uppercase text-on-surface tracking-tighter">Virat Kohli</p>
+                    <p class="text-[10px] text-gray-500 font-bold">Cricket</p>
+                </div>
+                <div class="check-badge absolute top-4 right-4 bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center shadow-lg opacity-0 scale-0 transition-all">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                </div>
+            </div>
+            <!-- Roger Federer -->
+            <div data-athlete="roger_federer" class="athlete-card group bg-[#111111] border border-[#ffffff15] rounded-xl overflow-hidden p-3 hover:border-primary/40 transition-all duration-300">
+                <div class="aspect-[4/5] rounded-lg overflow-hidden mb-3 grayscale group-hover:grayscale-0 transition-all">
+                    <img class="w-full h-full object-cover" src="assets/roger_federer_portrait_1775985395213.png" alt="Roger Federer">
+                </div>
+                <div class="space-y-0.5">
+                    <p class="text-xs font-black uppercase text-on-surface tracking-tighter">Roger Federer</p>
+                    <p class="text-[10px] text-gray-500 font-bold">Tennis</p>
+                </div>
+                <div class="check-badge absolute top-4 right-4 bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center shadow-lg opacity-0 scale-0 transition-all">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                </div>
+            </div>
+            <!-- Serena Williams -->
+            <div data-athlete="serena_williams" class="athlete-card group bg-[#111111] border border-[#ffffff15] rounded-xl overflow-hidden p-3 hover:border-primary/40 transition-all duration-300">
+                <div class="aspect-[4/5] rounded-lg overflow-hidden mb-3 grayscale group-hover:grayscale-0 transition-all">
+                    <img class="w-full h-full object-cover" src="assets/serena_williams_portrait_1775985377499.png" alt="Serena Williams">
+                </div>
+                <div class="space-y-0.5">
+                    <p class="text-xs font-black uppercase text-on-surface tracking-tighter">Serena Williams</p>
+                    <p class="text-[10px] text-gray-500 font-bold">Tennis</p>
+                </div>
+                <div class="check-badge absolute top-4 right-4 bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center shadow-lg opacity-0 scale-0 transition-all">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                </div>
+            </div>
+            <!-- Maria Sharapova -->
+            <div data-athlete="maria_sharapova" class="athlete-card group bg-[#111111] border border-[#ffffff15] rounded-xl overflow-hidden p-3 hover:border-primary/40 transition-all duration-300">
+                <div class="aspect-[4/5] rounded-lg overflow-hidden mb-3 grayscale group-hover:grayscale-0 transition-all">
+                    <img class="w-full h-full object-cover" src="assets/maria_sharapova_portrait_1775985415902.png" alt="Maria Sharapova">
+                </div>
+                <div class="space-y-0.5">
+                    <p class="text-xs font-black uppercase text-on-surface tracking-tighter">Maria Sharapova</p>
+                    <p class="text-[10px] text-gray-500 font-bold">Tennis</p>
+                </div>
+                <div class="check-badge absolute top-4 right-4 bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center shadow-lg opacity-0 scale-0 transition-all">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col bg-[#0e0e0e] w-20 hover:w-64 border-r border-[#ffffff15] group z-[60] transition-all duration-300 overflow-hidden">
+    <div class="p-6 mb-8">
+        <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-on-primary text-xl" style="font-variation-settings: 'FILL' 1;">face</span>
+            </div>
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <p class="font-black text-[#50b5ff] leading-none">Kinetic Lens</p>
+                <p class="text-[8px] uppercase tracking-widest text-gray-500">AI-Powered Athlete ID</p>
+            </div>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-2">
+        <a class="flex items-center gap-4 p-3 bg-[#1a1919] text-[#50b5ff] border-l-4 border-[#50b5ff] rounded-r-lg group/item" href="#">
+            <span class="material-symbols-outlined shrink-0">face</span>
+            <span class="uppercase tracking-widest text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">Recognition</span>
+        </a>
+        <a class="flex items-center gap-4 p-3 text-gray-500 hover:bg-[#131313] hover:text-white transition-all rounded-lg group/item active:translate-x-1 duration-200" href="#">
+            <span class="material-symbols-outlined shrink-0">monitoring</span>
+            <span class="uppercase tracking-widest text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">Analytics</span>
+        </a>
+        <a class="flex items-center gap-4 p-3 text-gray-500 hover:bg-[#131313] hover:text-white transition-all rounded-lg group/item active:translate-x-1 duration-200" href="#">
+            <span class="material-symbols-outlined shrink-0">groups</span>
+            <span class="uppercase tracking-widest text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">Roster</span>
+        </a>
+        <a class="flex items-center gap-4 p-3 text-gray-500 hover:bg-[#131313] hover:text-white transition-all rounded-lg group/item active:translate-x-1 duration-200" href="#">
+            <span class="material-symbols-outlined shrink-0">receipt_long</span>
+            <span class="uppercase tracking-widest text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">Logs</span>
+        </a>
+    </nav>
+    <div class="p-4 mt-auto">
+        <button id="new-scan-btn" class="w-full bg-primary/10 hover:bg-primary/20 text-primary p-3 rounded-lg flex items-center justify-center gap-3 transition-all duration-300">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="hidden group-hover:block uppercase tracking-widest text-[10px] font-bold">New Scan</span>
+        </button>
+    </div>
+</aside>
+
+<!-- Footer -->
+<footer class="flex flex-col md:flex-row justify-between items-center px-10 py-6 w-full bg-[#0e0e0e] border-t border-[#ffffff15]">
+    <div class="flex items-center gap-2 mb-4 md:mb-0">
+        <span class="text-[#50b5ff] font-bold text-sm tracking-tight">Kinetic Lens AI</span>
+        <span class="text-gray-700">|</span>
+        <span class="text-[12px] text-gray-500">© 2024 Kinetic Lens AI. All Rights Reserved.</span>
+    </div>
+    <div class="flex gap-6">
+        <a class="text-[12px] text-gray-600 hover:text-white transition-colors" href="#">Privacy Policy</a>
+        <a class="text-[12px] text-gray-600 hover:text-white transition-colors" href="#">Terms of Service</a>
+        <a class="text-[12px] text-gray-600 hover:text-white transition-colors" href="#">Documentation</a>
+    </div>
+</footer>
+
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full glass-panel h-16 flex justify-around items-center px-4 border-t border-[#ffffff15] z-50">
+    <a class="flex flex-col items-center gap-1 text-primary" href="#">
+        <span class="material-symbols-outlined">face</span>
+        <span class="text-[8px] font-black uppercase tracking-tighter">Recognize</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+        <span class="material-symbols-outlined">monitoring</span>
+        <span class="text-[8px] font-black uppercase tracking-tighter">Stats</span>
+    </a>
+    <div class="relative -mt-12">
+        <button id="mobile-upload-btn" class="bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
+            <span class="material-symbols-outlined text-3xl">camera</span>
+        </button>
+    </div>
+    <a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+        <span class="material-symbols-outlined">groups</span>
+        <span class="text-[8px] font-black uppercase tracking-tighter">Roster</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+        <span class="material-symbols-outlined">settings</span>
+        <span class="text-[8px] font-black uppercase tracking-tighter">Tools</span>
+    </a>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* 
+   Kinetic Lens - Design System
+   A premium dark theme for Sports Face Recognition
+*/
+
+:root {
+    --primary: #50b5ff;
+    --primary-dim: #00a6f9;
+    --primary-container: #00a9fd;
+    --on-primary: #00314e;
+    --surface: #0e0e0e;
+    --surface-container: #1a1919;
+    --surface-container-high: #201f1f;
+    --surface-container-highest: #262626;
+    --outline-variant: #494847;
+    --secondary: #4fa1f9;
+    --text-on-surface: #ffffff;
+    --text-gray: #adaaaa;
+}
+
+body {
+    background-color: var(--surface);
+    color: var(--text-on-surface);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism */
+.glass-panel {
+    backdrop-filter: blur(20px);
+    background: rgba(26, 25, 25, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes scan-line {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    box-shadow: 0 0 15px var(--primary);
+    animation: scan-line 2.5s infinite linear;
+    display: none; /* Shown during processing */
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(80, 181, 255, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(80, 181, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(80, 181, 255, 0); }
+}
+
+.pulse-match {
+    box-shadow: 0 0 0 0 rgba(80, 181, 255, 0.4);
+    animation: pulse-glow 2s infinite;
+    border-color: var(--primary) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-container-highest);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Navigation Hover Effects */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Image Hover Scale */
+.athlete-card img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.athlete-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Drag & Drop Feedback */
+.upload-zone.drag-over {
+    border-color: var(--primary);
+    background: rgba(80, 181, 255, 0.05);
+    transform: scale(1.02);
+}

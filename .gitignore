@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Web
+node_modules/
+.DS_Store
+
+# Project Specific Debug/Temporary
+server/last_crop.jpg
+server/b64.txt
+server/diagnose_model.py
+server/test_crop_vs_full.py
+server/verify_theory.py
+server/find_winner.py
+diag.txt
+debug_output.txt
+results.json
+results.json
+cmp.txt
+*.log
+
+# Models (Keep them if you want, but often ignored if large)
+# server/artificats/saved_model.pkl 
